@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+/* ----- Tailwind v4 theme registration -----
+   Anything declared here as --color-<name> becomes a real utility class,
+   e.g. --color-teal generates bg-teal / text-teal / border-teal, etc.
+   The *values* below are just the defaults (light mode); they get
+   overridden at runtime by the .dark block further down. */
+@theme {
+  --color-bg: #f4f2ed;
+  --color-bgWash: #edeae2;
+  --color-card: #fcfbf8;
+  --color-border: #dedace;
+  --color-borderHover: #2a9d9c;
+  --color-ink: #1b1e22;
+  --color-inkSoft: #5b5f66;
+  --color-inkMute: #8a8e94;
+  --color-teal: #2a9d9c;
+  --color-tealSoft: #e1f0ef;
+  --color-violet: #6e62c4;
+  --color-violetSoft: #e9e6f7;
+  --color-amber: #b87b2e;
+  --color-amberSoft: #f5e7d2;
+  --color-good: #2f9e44;
+  --color-goodSoft: #e8f7eb;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ----- Dark mode override -----
+   Same custom-property names as above, re-assigned when <html> has
+   the .dark class (toggled by ThemeContext). Because these are plain
+   CSS variables (not a second @theme block), this simple override
+   still works exactly like it did in v3. */
+.dark {
+  --color-bg: #0d1117;
+  --color-bgWash: #121826;
+  --color-card: #161b22;
+  --color-border: #242b33;
+  --color-borderHover: #3fc1c0;
+  --color-ink: #e6edf3;
+  --color-inkSoft: #9ba5b0;
+  --color-inkMute: #6e7681;
+  --color-teal: #3fc1c0;
+  --color-tealSoft: #123332;
+  --color-violet: #8a7fd6;
+  --color-violetSoft: #211e38;
+  --color-amber: #e0a458;
+  --color-amberSoft: #332616;
+  --color-good: #3cb371;
+  --color-goodSoft: #163722;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* ----- Keyframes ----- */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes float1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(120px, 90px) scale(1.15);
+  }
+  50% {
+    transform: translate(60px, 180px) scale(0.9);
+  }
+  75% {
+    transform: translate(-90px, 60px) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes float2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-130px, 70px) scale(0.9);
+  }
+  50% {
+    transform: translate(-70px, -100px) scale(1.2);
+  }
+  75% {
+    transform: translate(100px, -60px) scale(1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes float3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  30% {
+    transform: translate(100px, -80px) scale(1.1);
+  }
+  60% {
+    transform: translate(150px, 60px) scale(0.85);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes float4 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  30% {
+    transform: translate(-110px, -70px) scale(1.15);
+  }
+  60% {
+    transform: translate(-60px, 100px) scale(0.9);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes float5 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  35% {
+    transform: translate(90px, 110px) scale(1.1);
+  }
+  70% {
+    transform: translate(-120px, 40px) scale(0.9);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes float6 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  35% {
+    transform: translate(-100px, 90px) scale(0.85);
+  }
+  70% {
+    transform: translate(110px, -70px) scale(1.15);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* ----- Reusable animation/utility classes ----- */
+.animate-cursor {
+  animation: blink 1s steps(1) infinite;
+}
+.animate-breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+.animate-menu-in {
+  animation: menuIn 0.16s ease;
+}
+.animate-orb-1 {
+  animation: float1 14s ease-in-out infinite;
+}
+.animate-orb-2 {
+  animation: float2 16s ease-in-out infinite;
+}
+.animate-orb-3 {
+  animation: float3 12s ease-in-out infinite;
+}
+.animate-orb-4 {
+  animation: float4 15s ease-in-out infinite;
+}
+.animate-orb-5 {
+  animation: float5 13s ease-in-out infinite;
+}
+.animate-orb-6 {
+  animation: float6 17s ease-in-out infinite;
+}
+
+.card-glow {
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.card-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.chip {
+  transition: transform 0.15s ease;
+}
+
+.btn-solid {
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+.btn-solid:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
